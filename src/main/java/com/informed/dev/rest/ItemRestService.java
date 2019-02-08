@@ -48,13 +48,14 @@ public class ItemRestService {
 	}
 	
 	@GET
-	@Path("borrow/{bookId}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/borrow/{bookId}")
+	@Produces(MediaType.APPLICATION_JSON)
 	// eg browse to http://localhost:7070/rest/employee/3/name
 	public Item borrowBook(@PathParam("bookId") String bookId) {
 		initDummyItems();
 		try {
-			int id = Integer.parseInt(bookId);
+			System.out.println("In borrowBook id = " + bookId);
+			int id = Integer.parseInt(bookId);		
 			Item item = dummyItems.get(id-1);
 			item.setBorrowed(true);
 			return item;
@@ -64,6 +65,20 @@ public class ItemRestService {
 			return null;
 		}
 	}
+	
+	@GET
+	@Path("/check/{bookId}")
+	@Produces(MediaType.TEXT_PLAIN)
+	// eg browse to http://localhost:7070/rest/employee/3/name
+	public boolean checkStatus(@PathParam("bookId") String bookId) {
+		initDummyItems();
+		int id = Integer.parseInt(bookId);
+		System.out.println("In checkStatus id = " +id);
+		Item item = dummyItems.get(id-1);
+		return item.borrowed();
+	}
+
+	
 
 	@GET
 	@Path("/{id}")
@@ -74,7 +89,6 @@ public class ItemRestService {
 		initDummyItems();
 		Item ret = null;
 		try {
-			System.out.println("id is" +id);
 			int num= Integer.parseInt(id);
 			ret = dummyItems.get(num - 1);	// Emp id is 1-based
 		}
@@ -130,6 +144,7 @@ public class ItemRestService {
 	@Produces( {MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON} )
 	// eg browse to http://localhost:7070/rest/employee/all
 	public List<Item> itemList() {
+		System.out.println("in ItemList");
 		initDummyItems();
 		return dummyItems;
 	}

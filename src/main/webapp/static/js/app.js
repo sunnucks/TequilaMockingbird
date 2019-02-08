@@ -249,7 +249,7 @@ fetchItemList = function() {
 				nextEeElt = 1;
 				var ul = document.getElementById("ee-list");
 				while (ul.firstChild) {
-				    ul.removeChild(ul.firstChild);
+					ul.removeChild(ul.firstChild);
 				}
 				for (var i = 0; i < eeList.length; i++) {
 					var ee= eeList[i];
@@ -269,7 +269,7 @@ fetchItemList = function() {
 	}
 }
 
-	//Demo of fetching a List of Employees
+//Demo of fetching a List of Employees
 searchItemList = function() {
 	var item = createItem_ee3();	// Create from emp3* fields
 	var searchInput= document.getElementById('searchInput').value;
@@ -286,17 +286,17 @@ searchItemList = function() {
 				nextEeElt = 1;
 				var ul = document.getElementById("eee-list");
 				while (ul.firstChild) {
-				    ul.removeChild(ul.firstChild);
+					ul.removeChild(ul.firstChild);
 				}
 				for (var i = 0; i < eeList.length; i++) {
 					var ee= eeList[i];
 					if (ee.name.includes(searchInput)) {
-					var eeDetails = "Item "+ ee.id + ": "+ ee.name + ", "+ ee.author + ", " + ee.isbn + ", " + ee.genre;
-					var li = document.createElement("li");
-					li.appendChild(document.createTextNode(eeDetails));
-					li.setAttribute("onclick", 'fetchItemView(this.id)');
-					li.setAttribute("id", "restListItem-" + ee.id);
-					ul.appendChild(li);
+						var eeDetails = "Item "+ ee.id + ": "+ ee.name + ", "+ ee.author + ", " + ee.isbn + ", " + ee.genre;
+						var li = document.createElement("li");
+						li.appendChild(document.createTextNode(eeDetails));
+						li.setAttribute("onclick", 'fetchItemView(this.id)');
+						li.setAttribute("id", "restListItem-" + ee.id);
+						ul.appendChild(li);
 					}
 				}
 				showMsg("GET succeeded")
@@ -309,13 +309,13 @@ searchItemList = function() {
 }
 
 fetchItemView = function(id) {
-  // showMsg("fetchItemView() called from button/ element "+ id);
-  var idNum = id.substring( id.indexOf("-") + 1 );
-  setVisible(true, "bookDetails-panel");
-  document.getElementById("ee4Id").value= idNum; // Set ID of emp to display on next line
-  clickableGetJson(); // Call earlir function to fetch and display the clicked employee
-  // displayEee(JSON.parse(Http.responseText), "ee3");       // Display the returned Employee onto ee3* fields
- // displayEee(eeArray[idNum-1], "restListItem"); // id is 1-based, convert to 0-based array index
+	// showMsg("fetchItemView() called from button/ element "+ id);
+	var idNum = id.substring( id.indexOf("-") + 1 );
+	setVisible(true, "bookDetails-panel");
+	document.getElementById("ee4Id").value= idNum; // Set ID of emp to display on next line
+	clickableGetJson(); // Call earlir function to fetch and display the clicked employee
+	// displayEee(JSON.parse(Http.responseText), "ee3");       // Display the returned Employee onto ee3* fields
+	// displayEee(eeArray[idNum-1], "restListItem"); // id is 1-based, convert to 0-based array index
 }
 
 checkPassword = function(){
@@ -339,47 +339,97 @@ checkUsername = function(){
 }
 
 //borrowItem = function(){
-//	var eeNum = document.getElementById('ee4Id').value;
-//	var bookName =document.getElementById('ee3Name').value;
-//	if (ee4Id != null){
-//	restBorrowed();
-//	alert ("You have borrowed " + bookName);
-//	setItemAsBorrowed();
-//	}
-//	else{
-//		alert("Failure, this book is borrowed");
-//	}
+//var eeNum = document.getElementById('ee4Id').value;
+//var bookName =document.getElementById('ee3Name').value;
+//if (ee4Id != null){
+//restBorrowed();
+//alert ("You have borrowed " + bookName);
+//setItemAsBorrowed();
+//}
+//else{
+//alert("Failure, this book is borrowed");
+//}
 //}
 
 //setItemAsBorrowed = function (){
-//	var eeNum = document.getElementById('ee4Id').value;
-//	var borrowed = "borrowed";
-//	var eeNumStatus= eeNum + borrowed;
+//var eeNum = document.getElementById('ee4Id').value;
+//var borrowed = "borrowed";
+//var eeNumStatus= eeNum + borrowed;
 //}
 
-restBorrowed = function() {
-	var eeNum = document.getElementById('ee4Id').value;
-	var bookName =document.getElementById('ee3Name').value;
-	var borrowedStatus = document.getElementById('ee3Borrowed').value;
-	if (ee4Id != null && borrowedStatus != true){
-		alert ("You have borrowed " + bookName);
-	} else {
-		alert("Failure, this book is borrowed");
-	}
+//restBorrowed = function() {
+//var eeNum = document.getElementById('ee4Id').value;
+//var bookName =document.getElementById('ee3Name').value;
+////var borrowedStatus = document.getElementById('ee3Borrowed').value;
+//if (ee4Id != null ){
+//alert ("You have borrowed " + bookName);
+//} else {
+//alert("Failure, this book is borrowed");
+//}
+//const Http = new XMLHttpRequest();
+//const url= 'http:rest/borrow' + ee4Id;
+//try {
+//Http.open("GET", url);
+//Http.send();
+//}
+//catch (err) { // "No such URL" Exception not shown, but demonstrates JS exception handling:
+//showMsg("ERROR in GET: " + url + " : " + err.message);
+//}
+//Http.onreadystatechange=(e) => {
+//// Could check Http.status here, see later examples below
+//showMsg(Http.responseText);
+//}
+//}
+
+//checkStatus = function(){
+//const Http = new XMLHttpRequest();
+//const url= 'http:rest/check' + ee4Id;
+//Http.open("GET", url);
+//Http.send();
+//Http.onreadystatechange=(e) => {
+//// Could check Http.status here, see later examples below
+//alert(Http.responseText);
+//showMsg(Http.responseText);
+//}
+
+//}
+
+restBorrowed2 = function(){
 	const Http = new XMLHttpRequest();
-	const url= 'http:rest/borrow' + ee4Id;
-	try {
-		Http.open("GET", url);
-		Http.send();
-	}
-	catch (err) { // "No such URL" Exception not shown, but demonstrates JS exception handling:
-		showMsg("ERROR in GET: " + url + " : " + err.message);
-	}
+	const url= 'http:rest/item/check/' + ee4Id.value;
+	Http.open("GET", url);
+	Http.send();
+	alert("pre-test");
 	Http.onreadystatechange=(e) => {
-		// Could check Http.status here, see later examples below
-		showMsg(Http.responseText);
-	}
-}
+		if (Http.readyState == 4) {
+			var state = Http.readyState;
+			var borrowedStatus = Http.responseText;
+			if (Http.status == 200) {
+				var eeNum = document.getElementById('ee4Id').value;
+				var bookName =document.getElementById('ee3Name').value;
+				alert(borrowedStatus);
+				if (ee4Id != null && borrowedStatus == "false" ){
+					alert ("You have borrowed " + bookName);
+				} else {
+					alert("Failure, this book is borrowed");
+				}
+				const Http = new XMLHttpRequest();
+				const url= 'http:rest/item/borrow/' + ee4Id.value;
+				try {
+					Http.open("GET", url);
+					Http.send();
+				}
+				catch (err) { // "No such URL" Exception not shown, but demonstrates JS exception handling:
+					showMsg("ERROR in GET: " + url + " : " + err.message);
+				}
+				Http.onreadystatechange=(e) => {
+					// Could check Http.status here, see later examples below
+					showMsg(Http.responseText);
+				}
+			}
+		}
+	}}
 
 
-	
+
+
