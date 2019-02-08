@@ -1,0 +1,71 @@
+
+body {
+	margin: 6px;
+}
+
+ul#menu-list li {
+	color: red;
+	padding-bottom: 6px;
+}
+
+a.not-underlined {
+	text-decoration: none;
+}
+
+.negative {
+  background-color: red;
+}
+
+/* Common style for All panels, ie div elements whose id ends with -panel
+   Could have used: div#input-panel, div#rest-panel, ... etc */
+div[id$="-panel"] { 
+  padding-left: 8px;
+}
+
+div[id$="-panel"] h3 {  /* Add spacing above `h3` headings within panels */
+  padding-top: 6px;
+}
+
+div#panel-buttons button {
+  margin-left: 4px;	
+}
+
+span[id^="ee2"] { /* For REST / JSON fields, with id's starting with `ee2` , give them a border */
+    border: red solid 2px;
+    padding: 4px;	
+}
+
+div#input-panel, button#input-button {
+	background-color: rgba(255,0,0, 0.2);
+}
+
+div#rest-panel, button#rest-button {
+	background-image: linear-gradient( rgba(0,0,255, 0.3), rgba(0,0,255, 0.1) );
+}
+
+div#list-panel, button#list-button {
+	background-image: linear-gradient( rgba(0,255,0, 0.3), rgba(0,255,0, 0.1) );
+}
+
+div#pathParam-panel, button#pathParam-button {
+	background-image: linear-gradient( rgba(255,255,0, 0.3), rgba(255,255,0, 0.1) );
+}
+
+div#rcvJson-panel, button#rcvJson-button {
+	background-image: linear-gradient( rgba(0,255,255, 0.3), rgba(0,255,255, 0.1) );
+}
+
+div#edit-panel, button#edit-button {
+	background-image: linear-gradient( rgba(255,0,255, 0.3), rgba(255,0,255, 0.1) );
+}
+
+div#restList-panel, button#restList-button {
+	background-image: linear-gradient( rgba(255,0,63, 0.3), rgba(255,0,63, 0.1) );
+}
+
+p{color:white;}
+
+h3{color:white;}
+
+span{color:white;}
+

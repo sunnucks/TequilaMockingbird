@@ -1,0 +1,131 @@
+<html>
+<head>
+<script src="js/app.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<style>body {background: #4e1577}</style>
+</head>
+
+<body onload="hideAllPanels();">
+
+	<img src="background.jpg">
+	<h1 style="color: #e3bcff">Tequila Mockingbird</h1>
+	<h3 style="color: white">Read Smart <a href="https://www.drinkaware.co.uk/" style="color: white">Drink Aware</a></h3>
+	
+	<h1 style="color: #e3bcff">Librarian Access</h1>
+
+		<br/>
+		
+	<form action="/index.html">
+	<button>Home</button>
+	</form>
+	<hr/>
+
+		<div id="panel-buttons">	
+		<button onclick="showPanel('all');">All</button>
+		<button onclick="showPanel('lookupItem');" id="lookupItem-button">Look Up Item</button>
+		<button onclick="showPanel('addItem');" id="addItem-button">Add New Item</button>
+		<button onclick="showPanel('restList');" id="restList-button">See full item list</button>
+		<button onclick="showPanel('none');">None</button>
+		</div>
+		
+		<hr/>
+		
+		<div id="librarian-panel">
+			<h3>NEED TO DO AUTHENTICATION TEST HERE. </h3>
+			<form action="/librarianIndex.html">
+	<button>Confirm</button>
+	</form>
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="input-panel">
+			<h3>WHY DOES THIS WORK</h3>
+			Name: &nbsp;<input id="userName" />
+			<button onclick="greetUser();">Greet!</button>
+			<br/><br/><hr/>
+		</div>
+
+		
+		
+
+		<div id="rest-panel">
+			<h3>Rest</h3>
+			<button onclick="rest1();">Get Msg</button>
+
+			<br/><br/>
+			<div>Rest 2:</div>
+			Which msg, 2 or 3 ? <input id="msgNum" />
+			<button onclick="rest2();">Get Msg [n]</button>
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="list-panel">	<!-- Demo JS code dynamically adding LI elements to a UL list -->
+		  <h3>Dynamic list</h3>
+		  <button id="add-item" onclick='addToList()'>Add to list</button>
+		  <ul id="dynamic-list">
+		    <li id="element1">first</li>
+		    <li id="element2">second</li>
+		  </ul>
+		  <hr/>
+		</div>
+		
+		<div id="pathParam-panel">
+			<h3>Path params</h3>
+			Enter Employee number: &nbsp; 
+			<input id="eeNum" style="width:36px;" />
+			<button onclick="restPathParam();">Get ee name</button>
+			<br/>&nbsp;&nbsp; REST call: &nbsp; <span id="eePathUri"></span>
+			<br/>&nbsp;&nbsp; Employee's name is: &nbsp;&nbsp; <span id="eeName" />
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="lookupItem-panel">
+			<h3>Lookup Item</h3>
+			Enter Item Name: &nbsp; 
+			<input id="eeNum2" style="width:36px;" />
+			<button onclick="getItemName();">Get Item Details</button>
+			<br/>&nbsp;&nbsp; REST call: &nbsp; <span id="eeJsonUri"></span>
+			<br/><br/>
+			&nbsp;&nbsp; <b>Item (name, author, isbn, genre):</b> 
+				<span id="ee2Name"></span> <!-- NOTE must close with separate `close` tag, else cant set its `innerHTML -->
+				<span id="ee2Author"></span> 
+				<span id="ee2Isbn"></span>
+				<span id="ee2Genre"></span>
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="addItem-panel">
+			<h3>Add an item</h3>
+			Enter Item ID: &nbsp; 
+			<input id="ee3Id" style="width:36px;" />
+			<button onclick="editGetJson();">Get Item</button>
+			<br/><br/>
+			&nbsp;&nbsp; <b>Item (name, author, isbn, genre):</b> 
+				<input id="ee3Name" /> 
+				<input id="ee3Author" /> 
+				<input id="ee3Isbn" />
+				<input id="ee3Genre" />				
+			<br/>
+			&nbsp;&nbsp;&nbsp;<b>Actions: </b>
+			<button onclick="editCreateItem();">Create</button>
+		
+			<br/>
+			&nbsp;&nbsp; REST call: &nbsp; <span id="eeEditUri"></span>
+			<br/><br/><hr/>
+		</div>
+
+		<div id="restList-panel">	<!-- Get List of ees from REST, add LI elements to a UL list -->
+		  <h3>List Items</h3>
+		  &nbsp;&nbsp; <button id="restListFetch" onclick='fetchItemList()'>See list of all Items</button>
+		  <ul id="ee-list"> 
+		  </ul>
+		  <hr/>
+		</div>
+		
+		
+	<br/>
+	Message: &nbsp;&nbsp; <span id="message"></span>
+	<br/><br/><hr/>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-systems model-entity="FileSystems" workspace-home="./src/main/webapp/WEB-INF">
+ <file-system NAME="lib-junit-4.11.jar"
+  location="/Users/mikeburton/.m2/repository/junit/junit/4.11/junit-4.11.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hamcrest-core-1.3.jar"
+  location="/Users/mikeburton/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-javax.servlet-api-4.0.0.jar"
+  location="/Users/mikeburton/.m2/repository/javax/servlet/javax.servlet-api/4.0.0/javax.servlet-api-4.0.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-server-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-server/9.4.14.v20181114/jetty-server-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-http-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-http/9.4.14.v20181114/jetty-http-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-util-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-util/9.4.14.v20181114/jetty-util-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-io-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-io/9.4.14.v20181114/jetty-io-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-servlet-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.14.v20181114/jetty-servlet-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jetty-security-9.4.14.v20181114.jar"
+  location="/Users/mikeburton/.m2/repository/org/eclipse/jetty/jetty-security/9.4.14.v20181114/jetty-security-9.4.14.v20181114.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="Week2DemoWebapp"
+  location="/Users/mikeburton/DEV/COURSES/FrameworkTrng/JavaGradAltricham/projs/Inf_Grad_dev/Week2DemoWebapp" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-INF" location="%workspace.home%" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-ROOT" location="%workspace.home%/.." model-entity="FileSystemFolder"/>
+ <file-system NAME="src" location="%workspace.home%/../../java" model-entity="FileSystemFolder"/>
+ <file-system NAME="src-1"
+  location="%workspace.home%/../../../test/java" model-entity="FileSystemFolder"/>
+ <web model-entity="JstWeb"/>
+</file-systems>

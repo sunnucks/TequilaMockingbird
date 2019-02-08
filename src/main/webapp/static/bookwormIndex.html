@@ -1,0 +1,115 @@
+<html>
+<head>
+<script src="js/app.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<style>body {background: #4e1577}</style>
+</head>
+
+<body onload="hideAllPanels();">
+
+	<img src="background.jpg">
+	<h1 style="color: #e3bcff">Tequila Mockingbird</h1>
+	<h3 style="color: white">Read Smart <a href="https://www.drinkaware.co.uk/" style="color: white">Drink Aware</a></h3>
+	
+	<h1 style="color: #e3bcff">Bookworm Access</h1>
+
+		<br/>
+		
+	<form action="/index.html">
+	<button>Home</button>
+	</form>
+	<hr/>
+
+		<div id="panel-buttons">	
+		<button onclick="showPanel('all');">All</button>
+		<button onclick="showPanel('searchList');" id="searchList-button">Search For Item</button>
+		<button onclick="showPanel('restList');" id="restList-button">Full Item List</button>
+		<button onclick="showPanel('none');">None</button>
+		</div>
+		
+		<hr/>
+		
+		<div id="list-panel">	<!-- Demo JS code dynamically adding LI elements to a UL list -->
+		  <h3>Dynamic list</h3>
+		  <button id="add-item" onclick='addToList()'>Add to list</button>
+		  <ul id="dynamic-list">
+		    <li id="element1">first</li>
+		    <li id="element2">second</li>
+		  </ul>
+		  <hr/>
+		</div>
+		
+		<div id="lookupItem-panel">
+			<h3>Lookup Item</h3>
+			Enter Item Name: &nbsp; 
+			<input id="eeNum2" style="width:36px;" />
+			<button onclick="getItemName();">Get Item Details</button>
+			<br/>&nbsp;&nbsp; REST call: &nbsp; <span id="eeJsonUri"></span>
+			<br/><br/>
+			&nbsp;&nbsp; <b>Item (name, author, isbn, genre):</b> 
+				<span id="ee2Name"></span> <!-- NOTE must close with separate `close` tag, else cant set its `innerHTML -->
+				<span id="ee2Author"></span> 
+				<span id="ee2Isbn"></span>
+				<span id="ee2Genre"></span>
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="addItem-panel">
+			<h3>Add an item</h3>
+			Enter Item ID: &nbsp; 
+			<input id="ee3Id" style="width:36px;" />
+			<button onclick="editGetJson();">Get Item</button>
+			<br/><br/>
+			&nbsp;&nbsp; <b>Item (name, author, isbn, genre):</b> 
+				
+							
+			<br/>
+			&nbsp;&nbsp;&nbsp;<b>Actions: </b>
+			<button onclick="editCreateItem();">Create</button>
+		
+			<br/>
+			&nbsp;&nbsp; REST call: &nbsp; <span id="eeEditUri"></span>
+			<br/><br/><hr/>
+		</div>
+		
+		<div id="bookDetails-panel">
+			<h3>Book Details</h3>
+			Enter Item ID: &nbsp; 
+			<input id="ee4Id" style="width:36px;" />
+			<button onclick="clickableGetJson();">Get Item</button>
+			<br/><br/>
+			&nbsp;&nbsp; <b>Item (name, author, isbn, genre):</b> 
+				<input id="ee3Name" /> 
+				<input id="ee3Author" /> 
+				<input id="ee3Isbn" />
+				<input id="ee3Genre" />				
+			<br/>
+			&nbsp;&nbsp;&nbsp;<b>Actions: </b>
+			<button onclick="borrowItem();">Borrow</button>
+		
+			<br/>
+			&nbsp;&nbsp; REST call: &nbsp; <span id="eeEditUri"></span>
+			<br/><br/><hr/>
+		</div>
+
+		<div id="restList-panel">	<!-- Get List of ees from REST, add LI elements to a UL list -->
+		  <h3>List Items</h3>
+		  &nbsp;&nbsp; <button id="restListFetch" onclick='fetchItemList()'>See list of all Items</button>
+		  <ul id="ee-list"> 
+		  </ul>
+		  <hr/>
+		</div>
+		
+		<div id="searchList-panel">	<!-- Get List of ees from REST, add LI elements to a UL list -->
+		  Enter Item: &nbsp; 
+		  <input id="searchInput" style="width:100px;" />
+		  <button id="searchListFetch" onclick='searchItemList()'>Search</button>
+		  <ul id="eee-list">
+		  </ul>
+		  <hr/>
+		</div>
+		
+
+
+</body>
+</html>
