@@ -2,14 +2,16 @@
 <head>
 <script src="js/app.js"></script>
 <link rel="stylesheet" href="css/style.css">
-<style>body {background: #4e1577}</style>
 </head>
 
 <body onload="hideAllPanels();">
 
-	<img src="background.jpg">
-	<h1 style="color: #e3bcff">Tequila Mockingbird</h1>
-	<h3 style="color: white">Read Smart <a href="https://www.drinkaware.co.uk/" style="color: white">Drink Aware</a></h3>
+
+	<marquee behavior="scroll" direction="right">
+      <img src="background.jpg">
+    </marquee>
+	<h1>Tequila Mockingbird</h1>
+	<h3>Read Smart <a href="https://www.drinkaware.co.uk/" target="_blank" style="color: white">Drink Aware</a></h3>
 
 	<button onclick="showPanel('librarian');" id="librarian">Librarian</button>
 	<button onclick="showPanel('bookworm');" id="bookworm">Bookworm</button>	

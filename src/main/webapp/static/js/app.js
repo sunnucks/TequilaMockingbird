@@ -399,7 +399,6 @@ restBorrowed2 = function(){
 	const url= 'http:rest/item/check/' + ee4Id.value;
 	Http.open("GET", url);
 	Http.send();
-	alert("pre-test");
 	Http.onreadystatechange=(e) => {
 		if (Http.readyState == 4) {
 			var state = Http.readyState;
@@ -407,7 +406,6 @@ restBorrowed2 = function(){
 			if (Http.status == 200) {
 				var eeNum = document.getElementById('ee4Id').value;
 				var bookName =document.getElementById('ee3Name').value;
-				alert(borrowedStatus);
 				if (ee4Id != null && borrowedStatus == "false" ){
 					alert ("You have borrowed " + bookName);
 				} else {
@@ -435,7 +433,6 @@ restReturn = function(){
 	const url= 'http:rest/item/check/' + ee4Id.value;
 	Http.open("GET", url);
 	Http.send();
-	alert("pre-test");
 	Http.onreadystatechange=(e) => {
 		if (Http.readyState == 4) {
 			var state = Http.readyState;
@@ -443,7 +440,6 @@ restReturn = function(){
 			if (Http.status == 200) {
 				var eeNum = document.getElementById('ee4Id').value;
 				var bookName =document.getElementById('ee3Name').value;
-				alert(borrowedStatus);
 				if (ee4Id != null && borrowedStatus == "true" ){
 					alert ("You have returned " + bookName);
 				} else {
