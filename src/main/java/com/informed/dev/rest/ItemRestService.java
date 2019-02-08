@@ -24,10 +24,11 @@ public class ItemRestService {
 	private void initDummyItems() {
 		if (dummyItems == null) {
 			dummyItems = new ArrayList<Item>();
-			dummyItems.add( new Item(1, "Great Expectations", "Charles Dickens", "978-0141439563", "Fiction"));
-			dummyItems.add( new Item(2, "The First Moon Landing", "Gillian Clements", "978-0749649333", "NonFiction") );
-			dummyItems.add( new Item(3, "The Griffalo", "Julia Donaldson", "B001TIBX3K", "Children"));
-
+			dummyItems.add( new Item(1, "Tequila Mockingbird", "Harper Lee", "978-0141439563", "Fiction", false));
+			dummyItems.add( new Item(2, "Lord of the Gins", "Gillian Clements", "978-0749649333", "NonFiction", false) );
+			dummyItems.add( new Item(3, "Harry Potter and the Goblet of Beer", "J K Rowling", "B001TIBX3K", "Children", false));
+			dummyItems.add( new Item(4, "Charlie and the Vodka Factory", "Roald Dahl", "WE4567GH43", "Children", false));
+			dummyItems.add( new Item(5, "Scotch-22", "Benjamin Franklin", "5C0TCH12345", "Fiction", false));
 		}
 	}
 
@@ -43,6 +44,24 @@ public class ItemRestService {
 		}
 		catch (Exception ex) {
 			return "Error getting emp with id: " + id + " : " + ex;
+		}
+	}
+	
+	@GET
+	@Path("borrow/{bookId}")
+	@Produces(MediaType.TEXT_PLAIN)
+	// eg browse to http://localhost:7070/rest/employee/3/name
+	public Item borrowBook(@PathParam("bookId") String bookId) {
+		initDummyItems();
+		try {
+			int id = Integer.parseInt(bookId);
+			Item item = dummyItems.get(id-1);
+			item.setBorrowed(true);
+			return item;
+			
+		}
+		catch (Exception ex) {
+			return null;
 		}
 	}
 

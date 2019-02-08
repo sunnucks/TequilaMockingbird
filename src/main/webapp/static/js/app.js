@@ -137,6 +137,7 @@ displayEee3 = function(ee) {
 	document.getElementById('ee3Author').value = ee.author;
 	document.getElementById('ee3Isbn').value = ee.isbn;
 	document.getElementById('ee3Genre').value = ee.genre;
+	document.getElementById('ee3Borrowed').value = ee.borrowed;
 }
 
 editHttpStateChangeHandler = function(e) {
@@ -195,7 +196,7 @@ clickableGetJson = function() {
 	Http.onreadystatechange = editHttpStateChangeHandler;
 }
 
-//Demo of PUT (update an Employee)
+//Demo of PUT (update an Item Status)
 editUpdateItem= function() {
 	var item = createItem_ee3();	// Create from emp3* fields
 	const url= 'http:rest/item/';
@@ -294,7 +295,7 @@ searchItemList = function() {
 					var li = document.createElement("li");
 					li.appendChild(document.createTextNode(eeDetails));
 					li.setAttribute("onclick", 'fetchItemView(this.id)');
-					li.setAttribute("id", "ee-element" + nextEeElt++);
+					li.setAttribute("id", "restListItem-" + ee.id);
 					ul.appendChild(li);
 					}
 				}
@@ -337,25 +338,47 @@ checkUsername = function(){
 	}
 }
 
-borrowItem = function(){
+//borrowItem = function(){
+//	var eeNum = document.getElementById('ee4Id').value;
+//	var bookName =document.getElementById('ee3Name').value;
+//	if (ee4Id != null){
+//	restBorrowed();
+//	alert ("You have borrowed " + bookName);
+//	setItemAsBorrowed();
+//	}
+//	else{
+//		alert("Failure, this book is borrowed");
+//	}
+//}
+
+//setItemAsBorrowed = function (){
+//	var eeNum = document.getElementById('ee4Id').value;
+//	var borrowed = "borrowed";
+//	var eeNumStatus= eeNum + borrowed;
+//}
+
+restBorrowed = function() {
 	var eeNum = document.getElementById('ee4Id').value;
 	var bookName =document.getElementById('ee3Name').value;
-	if (ee4Id != null){
-//	setItemAsBorrowed();
-	alert ("You have borrowed " + bookName);
-	setItemAsBorrowed();
-	}
-	else{
+	var borrowedStatus = document.getElementById('ee3Borrowed').value;
+	if (ee4Id != null && borrowedStatus != true){
+		alert ("You have borrowed " + bookName);
+	} else {
 		alert("Failure, this book is borrowed");
 	}
-}
-
-setItemAsBorrowed = function (){
-	var eeNum = document.getElementById('ee4Id').value;
-	var borrowed = "borrowed";
-	var eeNumStatus= eeNum + borrowed;
-
-		
+	const Http = new XMLHttpRequest();
+	const url= 'http:rest/borrow' + ee4Id;
+	try {
+		Http.open("GET", url);
+		Http.send();
+	}
+	catch (err) { // "No such URL" Exception not shown, but demonstrates JS exception handling:
+		showMsg("ERROR in GET: " + url + " : " + err.message);
+	}
+	Http.onreadystatechange=(e) => {
+		// Could check Http.status here, see later examples below
+		showMsg(Http.responseText);
+	}
 }
 
 

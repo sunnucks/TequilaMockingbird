@@ -7,18 +7,19 @@ public class Item {
 	private String author;
 	private String isbn;
 	private String genre;
+	private boolean borrowed;
 
-	// Jackson requires a no-args ctor:
 	public Item() { 
-		this(0, "name?", "author?", "isbn?", "genre?");
+		this(0, "name?", "author?", "isbn?", "genre?", false);
 	}
 	
-	public Item(int id, String name, String author, String isbn, String genre) {
+	public Item(int id, String name, String author, String isbn, String genre, boolean borrowed) {
 		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.isbn = isbn;
 		this.genre = genre;
+		this.borrowed = borrowed;
 	}
 		
 	public void display() {
@@ -27,7 +28,7 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return String.format("[%d] %s, %s, %s, %s", id, name, author, isbn, genre);
+		return String.format("[%d] %s, %s, %s, %s", id, name, author, isbn, genre, borrowed);
 	}
 		
 	public void setId(int id) {
@@ -49,6 +50,10 @@ public class Item {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+	
+	public void setBorrowed(boolean borrowed) {
+		this.borrowed = borrowed;
+	}
 
 	public int getId() { 
 		return id;
@@ -69,4 +74,9 @@ public class Item {
 	public String getGenre() {
 		return genre;
 	}
+	
+	public boolean borrowed() {
+		return borrowed;
+	}
 }
+
