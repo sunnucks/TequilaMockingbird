@@ -65,6 +65,26 @@ public class ItemRestService {
 			return null;
 		}
 	}
+
+	@GET
+	@Path("/return/{bookId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	// eg browse to http://localhost:7070/rest/employee/3/name
+	public Item returnBook(@PathParam("bookId") String bookId) {
+		initDummyItems();
+		try {
+			System.out.println("In borrowBook id = " + bookId);
+			int id = Integer.parseInt(bookId);		
+			Item item = dummyItems.get(id-1);
+			item.setBorrowed(false);
+			return item;
+			
+		}
+		catch (Exception ex) {
+			return null;
+		}
+	}
+	
 	
 	@GET
 	@Path("/check/{bookId}")

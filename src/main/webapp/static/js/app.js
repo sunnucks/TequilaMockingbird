@@ -430,6 +430,42 @@ restBorrowed2 = function(){
 		}
 	}}
 
+restReturn = function(){
+	const Http = new XMLHttpRequest();
+	const url= 'http:rest/item/check/' + ee4Id.value;
+	Http.open("GET", url);
+	Http.send();
+	alert("pre-test");
+	Http.onreadystatechange=(e) => {
+		if (Http.readyState == 4) {
+			var state = Http.readyState;
+			var borrowedStatus = Http.responseText;
+			if (Http.status == 200) {
+				var eeNum = document.getElementById('ee4Id').value;
+				var bookName =document.getElementById('ee3Name').value;
+				alert(borrowedStatus);
+				if (ee4Id != null && borrowedStatus == "true" ){
+					alert ("You have returned " + bookName);
+				} else {
+					alert("Failure, this book is not borrowed");
+				}
+				const Http = new XMLHttpRequest();
+				const url= 'http:rest/item/return/' + ee4Id.value;
+				try {
+					Http.open("GET", url);
+					Http.send();
+				}
+				catch (err) { // "No such URL" Exception not shown, but demonstrates JS exception handling:
+					showMsg("ERROR in GET: " + url + " : " + err.message);
+				}
+				Http.onreadystatechange=(e) => {
+					// Could check Http.status here, see later examples below
+					showMsg(Http.responseText);
+				}
+			}
+		}
+	}}
+
 
 
 
